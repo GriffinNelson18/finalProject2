@@ -8,7 +8,8 @@ class Ship():
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        self.rect.centerx = self.screen_rect.centerxself.rect.bottom = self.screen_rect.bottom
+        self.rect.centerx = self.screen_rect.centerx #griffin youre an idiot
+        self.rect.bottom = self.screen_rect.bottom
     
     def blitme(self):
         #Draw the ship at its current location (updates it)
