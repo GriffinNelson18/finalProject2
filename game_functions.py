@@ -10,7 +10,10 @@ def check_events(ship):
 		elif event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_RIGHT:
 				# Move the ship to the right.
-				ship.rect.centerx += 1
+				ship.rect.centerx += 50
+			if event.key == pygame.K_LEFT:
+				# Move the ship to the right.
+				ship.rect.centerx -= 50
 
 def update_screen(ai_settings, screen, ship):
 	# Redraw the screen during each pass through the loop.
