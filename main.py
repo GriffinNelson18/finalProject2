@@ -1,5 +1,5 @@
-#METEOR DODGE
-#KIDS CAN CODE GETS FULL CREDIT FOR STARTING ME OFF
+#CUBEFIELD
+#Full credit to 'Kids Can Code' for the game template and keystate function tutorials
 import pygame
 import random
 
@@ -8,6 +8,7 @@ WIDTH = 960
 HEIGHT = 600
 FPS = 60
 PROGRESS = 1
+DIFFICULTY = 1
 
 # define colors
 WHITE = (255, 255, 255)
@@ -58,24 +59,32 @@ class Glider(pygame.sprite.Sprite):
         #every key on the keyboard that is down in this instant
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_LEFT] and self.rect.x != 0:
-            self.speedx = -5
+            self.speedx = -10
         if keystate[pygame.K_RIGHT] and self.rect.x != WIDTH - self.rect.width:
-            self.speedx = 5
+            self.speedx = 10
         #controls how fast it updates
         self.rect.x += self.speedx
+
+#variable to allow color change
+mobColor = RED
 
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((50,40))
-        self.image.fill(RED)
+        self.image.fill(mobColor)
         #get position
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width)
         self.rect.bottom = 0
 
     def update(self):
-        self.rect.y += 10
+        self.rect.y += 10 + DIFFICULTY
+
+    # def colorchange(self):
+    #     for n in mobColor:
+    #         n += 1
+        
 
 
 #Create sprite group for all sprites
@@ -106,6 +115,14 @@ while running:
 
     if PROGRESS % 10 == 0:
         newmob()
+
+    if PROGRESS % 100 == 0:
+        DIFFICULTY += 1
+        '''If you do not want to play with increasing difficulty, simply comment out the line
+        above and uncomment the line below.'''
+        #DIFFICULTY = 1
+
+    
 
     #End game upon collision
     hits = pygame.sprite.spritecollide(player, mobs, True)
