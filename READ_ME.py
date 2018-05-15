@@ -37,9 +37,7 @@
     which is programmed in the Mob class, and an update file that makes the sprites move down 
     the y-axis. Every time the frame updates, 1 point is added to the Player's score. Therefore,
     every second the player is alive, they earn 60 points because the FPS = 60. Additionally,
-    you will notice that there are no two enemy sprites on the same Y-axis line, and that is because
-    each frame produces 1 new sprite after another, so they all come down in a ladder formation
-    rather than in chunks.   '''
+    for every 10 points a player earns (10 frames), 1 new "mob" (enemy sprite) is spawned.   '''
 
     #Key Concepts Included That I learned in class:
     '''
@@ -51,6 +49,7 @@
         -Libraries
         -Classes
         -Functions (And parameters)
+        -Modulus
     '''
 
     #Concepts Learned Outside of Class:
